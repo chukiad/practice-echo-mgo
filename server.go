@@ -1,12 +1,23 @@
 package main
 
 import (
+	"log"
 	"practice-echo-mgo/api"
+
+	"gopkg.in/mgo.v2"
 
 	"github.com/labstack/echo"
 )
 
 func main() {
+	var err error
+
+	api.Dbsession, err = mgo.Dial("localhost/testdb")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer api.Dbsession.Close()
+
 	e := echo.New()
 
 	e.GET("/users", api.ListUser)
