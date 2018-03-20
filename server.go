@@ -1,7 +1,7 @@
 package main
 
 import (
-	"net/http"
+	"practice-echo-mgo/api"
 
 	"github.com/labstack/echo"
 )
@@ -9,12 +9,9 @@ import (
 func main() {
 	e := echo.New()
 
-	e.GET("/users/:id", getUser)
+	e.GET("/users", api.ListUser)
+	e.GET("/users/:id", api.GetUser)
+	e.POST("/users", api.SaveUser)
 
 	e.Logger.Fatal(e.Start(":1323"))
-}
-
-func getUser(c echo.Context) error {
-	id := c.Param("id")
-	return c.String(http.StatusOK, id)
 }
