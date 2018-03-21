@@ -9,10 +9,17 @@ import (
 
 // User struct use for api
 type User struct {
-	ID          bson.ObjectId `json:"id" bson:"_id"`
-	Name        string        `json:"name" bson:"name"`
-	Email       string        `json:"email" bson:"email"`
-	CreatedTime time.Time     `json:"createdtime" bson:"createdtime"`
+	ID    bson.ObjectId `json:"id" bson:"_id"`
+	Name  string        `json:"name" bson:"name"`
+	Email string        `json:"email" bson:"email"`
+	Time  time.Time     `json:"time" bson:"time"`
+}
+
+// UserForUpdate struct use for update api
+type UserForUpdate struct {
+	Name  string    `json:"name" bson:"name"`
+	Email string    `json:"email" bson:"email"`
+	Time  time.Time `json:"time" bson:"time"`
 }
 
 // RspMsg struct use for return error message

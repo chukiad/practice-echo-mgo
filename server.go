@@ -23,6 +23,8 @@ func main() {
 	e.GET("/users", api.ListUser)
 	e.GET("/users/:id", api.GetUser)
 	e.POST("/users", api.SaveUser)
+	e.PUT("/users/:id", api.UpdateUser)
+	e.DELETE("/users/:id", api.DeleteUser)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }

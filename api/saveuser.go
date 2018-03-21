@@ -19,10 +19,9 @@ func SaveUser(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, RspMsg{"Invalid Parameter"})
 	}
 	u.ID = bson.NewObjectId()
-	u.CreatedTime = time.Now()
+	u.Time = time.Now()
 
-	cu := Dbsession.DB("").C("UserData")
-	err := cu.Insert(u)
+	err := Dbsession.DB("").C("UserData").Insert(u)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, RspMsg{err.Error()})
 	}

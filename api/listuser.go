@@ -13,5 +13,8 @@ func ListUser(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, RspMsg{err.Error()})
 	}
+	if u == nil {
+		u = []User{}
+	}
 	return c.JSON(http.StatusOK, u)
 }
